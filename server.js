@@ -10,6 +10,8 @@ const poke_router = require('./controllers/poke_router');
 //middle ware
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(methodOverride("_method"));
+
 // Setup routes
 app.use('/', pokemonRouter)
 
