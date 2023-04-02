@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pokemon Index</title>
+  </head>
+  <body>
+    <h1>Pokemon Index</h1>
+    <ul>
+      <% pokemons.forEach(pokemon => { %>
+        <li>
+          <a href="/pokemon/<%= pokemon.id %>"><%= pokemon.name %></a>
+        </li>
+      <% }) %>
+    </ul>
+    <a href="/pokemon/new">Create a new Pokemon</a>
+  </body>
+</html>
+
+

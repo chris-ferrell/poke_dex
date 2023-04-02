@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Create New Pokemon</title>
+  </head>
+  <body>
+    <h1>Create New Pokemon</h1>
+    <form action="/pokemon" method="post">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name"><br>
+
+      <label for="type">Type:</label>
+      <input type="text" name="type" id="type"><br>
+
+      <label for="level">Level:</label>
+      <input type="number" name="level" id="level"><br>
+
+      <label for="moves">Moves:</label>
+      <input type="text" name="moves" id="moves"><br>
+
+      <input type="submit" value="Create Pokemon">
+    </form>
+    <a href="/pokemon">Back to Index</a>
+  </body>
+</html>

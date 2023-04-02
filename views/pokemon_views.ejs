@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title><%= pokeOne.name %></title>
+  </head>
+  <body>
+    <h1><%= pokeOne.name %></h1>
+    <p>Type: <%= pokeOne.type %></p>
+    <ul>
+      <h5> STATS </h5>
+      <% for (let key in pokeOne.stats) { %>
+        <li><%= key %>: <%= pokeOne.stats[key] %></li>
+      <% } %>
+    </ul>
+    <p>Moves:
+        
+      </p>
+    <a href="/pokemon/<%= pokeOne.id %>/edit">Edit</a>
+    <form action="/pokemon/<%= pokeOne.id %>?_method=DELETE" method="post">
+      <input type="submit" value="Delete">
+    </form>
+    <a href="/pokemon">Back to Index</a>
+  </body>
+</html>
+<!-- 
+stats: {
+  hp: "60",
+  attack: "62",
+  defense: "63",
+  spattack: "80",
+  spdefense: "80",
+  speed: "60"
+}, -->
