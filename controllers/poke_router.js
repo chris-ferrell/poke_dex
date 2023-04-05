@@ -48,8 +48,13 @@ router.get('/pokemon/:id', (req, res) => {
 
   // Route for displaying the form for editing an existing pokemon
   router.get('/pokemon/:id/edit', (req, res) => {
+console.log(pokemons[req.params.id])
     const pokemon = pokemons.find(pokemon => pokemon.id == req.params.id);
-    res.render('pokemon_edit', { pokemon });
+    res.render(
+      'pokemon_edit'
+    , {
+       pokemon:pokemons[req.params.id]
+      });
   });
   
   // Route for creating a new pokemon
@@ -65,8 +70,39 @@ router.post('/pokemon', (req, res) => {
   
   // Route for updating an existing pokemon
   router.put('/pokemon/:id', (req, res) => {
-   
-    res.redirect(`/pokemon/${req.params.id}`);
+    const id = req.params.id;
+    const { name, img, type, stats, moves, damages, misc } = req.body;
+  
+    // Find the Pokemon with the given ID
+    let index = -1;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+  
+    // If the Pokemon with the given ID doesn't exist, return a 404 error
+    if (index === -1) {
+      return res.status(404).send('Pokemon not found');
+    }
+  
+    // Update the Pokemon's data with the new values
+    data[index] = {
+      id,
+      name,
+      img,
+      type,
+      stats,
+      moves,
+      damages,
+      misc
+    };
+  
+    // Send the updated Pokemon as a response
+    res.send(data[index]);
+
+    // res.redirect(`/pokemon/${req.params.id}`);
   });
   
   // Route for deleting an existing pokemon
